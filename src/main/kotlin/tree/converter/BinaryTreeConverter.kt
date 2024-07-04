@@ -3,9 +3,9 @@ package tree.converter
 import tree.TreeNode
 
 
-fun reconstructBinaryTreeWithPostOrder(
+fun reconstructBinaryTreeWithPostorderAndInorder(
     postorder: IntArray,
-    inorder: IntArray,
+    inorder: IntArray
 ): TreeNode? {
     val inorderMap = HashMap<Int, Int>()
     var postIndex = postorder.size - 1
