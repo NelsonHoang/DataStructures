@@ -5,13 +5,16 @@ import tree.TreeNode
 
 class BinaryTreeConverterTest {
     @Test
-    /**
-     *        3
-     *      /  \
-     *    9     20
-     *         /  \
-     *        15   7
-     */
+    fun reconstructBinaryTreeWithPreorderAndInorder() {
+        val root = reconstructBinaryTreeWithPreorderAndInorder(
+            preorder = intArrayOf(3, 9, 20, 15, 7),
+            inorder = intArrayOf(9, 3, 15, 20, 7)
+        )
+
+        verifyTree(root)
+    }
+
+    @Test
     fun reconstructBinaryTreeWithPostorderAndInorder() {
         val root = reconstructBinaryTreeWithPostorderAndInorder(
             postorder = intArrayOf(9, 15, 7, 20, 3),
@@ -21,6 +24,13 @@ class BinaryTreeConverterTest {
         verifyTree(root)
     }
 
+    /**
+     *        3
+     *      /  \
+     *    9     20
+     *         /  \
+     *        15   7
+     */
     private fun verifyTree(root: TreeNode?) {
         assert(root?.value == 3)
         assert(root?.left?.value == 9)
