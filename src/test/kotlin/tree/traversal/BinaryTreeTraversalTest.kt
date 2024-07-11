@@ -41,6 +41,44 @@ class BinaryTreeTraversalTest {
         )
     }
 
+    @Test
+    fun lowestCommonAncestorIsRoot() {
+        val root = TreeNode(3)
+        val q = TreeNode(9)
+        val p = TreeNode(20)
+        root.left = q
+        root.right = p
+        p.left = TreeNode(15)
+        p.right = TreeNode(7)
+
+        assert(
+            lowestCommonAncestor(
+                root,
+                p,
+                q
+            ) == root
+        )
+    }
+
+    @Test
+    fun lowestCommonAncestorIsNotRoot() {
+        val root = TreeNode(3)
+        val p = TreeNode(15)
+        val q = TreeNode(7)
+        val lca = TreeNode(20)
+        root.left = TreeNode(9)
+        root.right = lca
+        lca.left = p
+        lca.right = q
+        assert(
+            lowestCommonAncestor(
+                root,
+                p,
+                q
+            ) == lca
+        )
+    }
+
     /**
      *        3
      *      /  \
