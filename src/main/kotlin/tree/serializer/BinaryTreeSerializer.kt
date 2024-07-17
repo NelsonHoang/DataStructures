@@ -27,3 +27,30 @@ fun serializeBinaryTree(root: TreeNode?): String {
     sb.deleteCharAt(sb.length -1)
     return sb.toString()
 }
+
+/**
+ * @param str: String representation of a binary tree.
+ *
+ * @return A root of the reconstructed binary tree
+ */
+fun deserializeBinaryTree(str : String) : TreeNode? {
+    val list = str.split(",").toMutableList()
+
+    fun recurse(list : MutableList<String>) : TreeNode? {
+        if (list.isEmpty()) return null
+
+        if (list[0] == "#") {
+            list.removeAt(0)
+            return null
+        }
+
+        val node = TreeNode(list[0].toInt())
+        list.removeAt(0)
+        node.left = recurse(list)
+        node.right = recurse(list)
+
+        return node
+    }
+
+    return recurse(list)
+}
