@@ -17,3 +17,25 @@ fun removeElement(nums: IntArray, numToRemove: Int): Int {
     }
     return k
 }
+
+/**
+ * @param nums a sorted [IntArray]
+ *
+ * @return the number of unique elements in [nums]
+ */
+fun removeDuplicatesFromSortedArray(nums : IntArray) : Int {
+    if (nums.isEmpty()) return 0
+
+    var current = nums[0]
+    var uniqueNumbers = 1
+
+    for (i in 1..<nums.size) {
+        if (nums[i] != current) {
+            current = nums[i]
+            nums[uniqueNumbers] = current
+            uniqueNumbers++
+        }
+    }
+
+    return uniqueNumbers
+}
