@@ -2,7 +2,7 @@ package array
 
 import org.junit.jupiter.api.Test
 
-class SortedSquarerTest {
+class SquarerTest {
 
     @Test
     fun squaresOfSortedArrayWithoutNegatives() {
