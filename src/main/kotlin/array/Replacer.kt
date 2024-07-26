@@ -1,5 +1,7 @@
 package array
 
+import java.util.*
+
 /**
  * @param arr the original array
  *
@@ -21,4 +23,26 @@ fun replaceElementsWithGreatestElementOnRightSide(arr: IntArray): IntArray {
         }
     }
     return arr
+}
+
+/**
+ * @param nums the original array
+ *
+ * This function will manipulate [nums] by moving all zeroes to the end while
+ * maintaining the relative order of all other elements shifted to the left.
+ */
+fun moveZeroesToEnd(nums: IntArray) {
+    var zeroCount = 0
+    var currentIndex = 0
+    for (num in nums) {
+        if (num == 0) {
+            zeroCount++
+        } else {
+            nums[currentIndex++] = num
+        }
+    }
+
+    for (i in nums.size - zeroCount..<nums.size) {
+        nums[i] = 0
+    }
 }
