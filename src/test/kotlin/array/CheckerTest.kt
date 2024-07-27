@@ -18,4 +18,14 @@ class CheckerTest {
     fun checkIfMountainArraySingleElementFalse() {
         assert(checkIfMountainArray(intArrayOf(2)) == false)
     }
+
+    @Test
+    fun checkIfSortedTwoWrongElements() {
+        assert(checkIfSorted(intArrayOf(1,3,2,3,5)) == 2)
+    }
+
+    @Test
+    fun checkIfSortedZeroWrongElements() {
+        assert(checkIfSorted(intArrayOf(1,2,3,4,5)) == 0)
+    }
 }

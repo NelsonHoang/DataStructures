@@ -25,3 +25,24 @@ fun checkIfMountainArray(arr: IntArray): Boolean {
 
     return hasAscended && hasDescended
 }
+
+/**
+ * Runtime: O(N Log N)
+ * Space Complexity: O(N)
+ *
+ * @param nums the original array
+ *
+ * @return an [Int] representing the number of elements not in the right
+ * position. The array is expected to be monotonically increasing.
+ */
+fun checkIfSorted(nums: IntArray) : Int {
+    val sorted = nums.sorted()
+    var wrongCount = 0
+    nums.forEachIndexed{ index, num ->
+        if (num != sorted[index]) {
+            wrongCount++
+        }
+    }
+
+    return wrongCount
+}
