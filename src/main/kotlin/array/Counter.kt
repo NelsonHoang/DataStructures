@@ -1,6 +1,36 @@
 package array
 
 /**
+ * Runtime Complexity: O(N)
+ *
+ * Space Complexity: O(1)
+ *
+ * @param nums a binary [IntArray] consisting of only 1s and 0s
+ *
+ * @return the count of consecutive ones if a single
+ */
+fun checkConsecutiveOnesII(nums: IntArray): Int {
+    var left = 0
+    var right = 0
+    var numberOfZeroes = 0
+    var longestSequence = 0
+
+    while (right < nums.size) {
+        if (nums[right] == 0) numberOfZeroes++
+
+        while (numberOfZeroes == 2) {
+            if (nums[left] == 0) numberOfZeroes--
+            left++
+        }
+
+        longestSequence = maxOf(longestSequence, right - left + 1)
+        right++
+    }
+
+    return longestSequence
+}
+
+/**
  * Runtime Complexity: O(2^N) in the worst case we have an array with all 0s
  * and that would have a branching factor of 2.
  * Space Complexity: O(N) because the maximum depth of the recursion tree is N
