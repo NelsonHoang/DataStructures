@@ -1,6 +1,36 @@
 package array
 
-import java.util.PriorityQueue
+import java.util.SortedSet
+
+/**
+ *  Runtime Complexity: O(N) Since we scan the array once. Inserting to a
+ *  [SortedSet] is O(Log N) time
+ *  Space Complexity: O(1) Since our [SortedSet] is at most size 3
+ *
+ *  @return The value of the third max number in the array. If the third max
+ *  number doesn't exist then return the max number
+ */
+fun findThirdMaxNumberWithSortedSet(nums: IntArray): Int {
+    val sortedSet = sortedSetOf<Int>()
+
+    for (num in nums) {
+        if (sortedSet.contains(num)) continue
+        if (sortedSet.size == 3) {
+            if (sortedSet.first() < num) {
+                sortedSet.pollFirst()
+                sortedSet.add(num)
+            }
+        } else {
+            sortedSet.add(num)
+        }
+    }
+
+    return if (sortedSet.size == 3) {
+        sortedSet.first()
+    } else {
+        sortedSet.last()
+    }
+}
 
 /**
  * Runtime Complexity: O(N) since we scan the array once.
