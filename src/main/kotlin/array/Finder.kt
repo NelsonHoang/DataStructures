@@ -1,6 +1,32 @@
 package array
 
 import java.util.SortedSet
+import kotlin.math.abs
+
+/**
+ * Runtime: O(N)
+ * Space Complexity: O(1) we don't count the list to return and do our logic
+ * in place
+ *
+ * @param nums the original [IntArray]
+ *
+ * @return a [List] of numbers from the range 1 to n that do not appear in
+ * [nums], n being the size of [nums]
+ */
+fun findDisappearedNumbers(nums: IntArray): List<Int> {
+    for (num in nums) {
+        if (nums[abs(num) - 1] < 0) continue
+        nums[abs(num) - 1] *= -1
+    }
+
+    val list = mutableListOf<Int>()
+    for (i in nums.indices) {
+        if (nums[i] > 0) {
+            list.add(i + 1)
+        }
+    }
+    return list
+}
 
 /**
  *  Runtime Complexity: O(N) Since we scan the array once. Inserting to a

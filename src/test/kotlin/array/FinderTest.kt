@@ -5,6 +5,16 @@ import org.junit.jupiter.api.Test
 class FinderTest {
 
     @Test
+    fun findDisappearedNumbers() {
+        val nums = intArrayOf(4, 3, 2, 7, 8, 2, 3, 1)
+        assert(
+            findDisappearedNumbers(nums).toIntArray().contentEquals(
+                intArrayOf(5, 6)
+            )
+        )
+    }
+
+    @Test
     fun findThirdMaxNumberSized() {
         val nums = intArrayOf(2, 4, 1, 3, 1)
         assert(findThirdMaxNumber(nums) == 2)
